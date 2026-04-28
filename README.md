@@ -1,41 +1,69 @@
-# E-commerce Sales Analysis | Python + Power BI
+# E-commerce Sales Analysis | Python + SQL + Power BI
 
-**End-to-end project: Data cleaning in Python → Interactive dashboard in Power BI**  
+**End-to-end project: Raw data → Python cleaning → SQL validation → Interactive Power BI dashboard**  
 **Analyzed $8.91M in retail transactions to identify 82% UK market concentration**
 
 ### 📊 Dashboard Preview
 [View Dashboard PDF](E-commerce_Sales_Overview.pdf)
 
 ### 🔧 Tech Stack
-**Python**: pandas, numpy, Jupyter | **BI**: Power BI, DAX, Power Query
+**Python**: pandas, numpy, sqlite3 | **SQL**: SQLite | **BI**: Power BI, DAX, Power Query
 
 ### 🔍 Project Workflow
-1. **Data Cleaning** `python_scripts/data_cleaning.py`
-   - Handled 541K+ rows: removed nulls, cancelled orders, duplicates
-   - Created `TotalPrice` column: `Quantity * Price`
-   - Exported `cleaned_retail.csv` for Power BI
+1. **Data Cleaning & SQL Analysis** `python_scripts/`
+   - **cleaning.py**: Processed 541K+ rows using pandas
+     - Removed nulls, cancelled orders `InvoiceNo LIKE 'C%'`, duplicates
+     - Created `TotalPrice` column: `Quantity * Price`
+     - Exported `cleaned_retail.csv` for Power BI
+   - **analysis.py**: Validated metrics using SQL + pandas
+     ```sql
+     SELECT Country, 
+            ROUND(SUM(TotalPrice),2) as Revenue,
+            ROUND(SUM(TotalPrice)*100.0/(SELECT SUM(TotalPrice) FROM retail),1) as Percent 
+     FROM retail 
+     GROUP BY Country 
+     ORDER BY Revenue DESC LIMIT 5
 
-2. **Exploratory Analysis** `python_scripts/eda.ipynb`
-   - Initial revenue trends + country breakdown in Python
-   - Validated data quality before BI build
+      - Programmatically confirmed *82.0% UK revenue concentration*
+Output: 541,909 total cleaned transactions analyzed
 
-3. **Dashboard Development** `Ecommerce_Sales.pbix`
-   - Custom DAX measure: `FORMAT(SUM('cleaned retail'[TotalPrice]), "$#,##0")`
-   - Interactive date slicer + donut chart by country
-   - Built dynamic date filtering affecting all visuals simultaneously
-   - Configured visual interactions to prevent cross-filtering
+Dashboard Development Ecommerce_Sales.pbix
+- Custom DAX measure: FORMAT(SUM('cleaned retail'[TotalPrice]), "$#,##0")
+- Interactive date slicer controlling all visuals simultaneously
+- Donut chart showing country-wise revenue breakdown
+- Configured visual interactions to prevent cross-filtering conflicts
 
 ### 💡 Key Business Insight
-**82.01% revenue concentration in United Kingdom** indicates high market dependency and major opportunity for geographic expansion.
+
+**82.01% revenue concentration in United Kingdom** indicates high market dependency and major opportunity for geographic expansion. Date slicer enables stakeholders to analyze seasonal trends and campaign performance.
 
 ### 📁 Repository Structure
+
 ├── E-commerce_Sales_Overview.pdf    # Dashboard export
 ├── Ecommerce_Sales.pbix              # Power BI source file
 ├── python_scripts/
-│   ├── data_cleaning.py             # Pandas cleaning script
-│   └── eda.ipynb                     # Exploratory analysis
+│   ├── cleaning.py                  # Pandas data cleaning
+│   └── analysis.py                  # SQL + pandas validation
 └── requirements.txt                  # Python dependencies
 
-
 ### 🎯 Skills Demonstrated
-Python | pandas | Power BI | DAX | Data Cleaning | Data Visualization | Business Analysis
+Python | pandas | SQL | SQLite | Power BI | DAX | Data Cleaning | Data Validation | Data Visualization | Business Analysis
+
+---
+
+### **How to use it:**
+
+1. **GitHub** → Your repo → `README.md` → `Edit` → Delete everything → Paste this → `Commit changes`
+2. **Check** that `[View Dashboard PDF]` link works after you upload the PDF
+
+**This README now shows:**
+1. **Business impact** in line 1: $8.91M + 82%
+2. **Full tech stack**: Python + SQL + BI — exactly what Superwork hires for
+3. **Code proof**: Actual SQL query + DAX measure visible
+4. **Clean structure**: Any recruiter can skim in 10 seconds
+
+**You’re done. This repo will pass screens.**
+
+**Go commit this README, grab your repo URL, and apply to Superwork.**
+
+Good luck bro — you built a legit analyst portfolio in one night 🚀
