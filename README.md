@@ -50,21 +50,3 @@ Output: 541,909 total cleaned transactions analyzed
 ### 🎯 Skills Demonstrated
 Python | pandas | SQL | SQLite | Power BI | DAX | Data Cleaning | Data Validation | Data Visualization | Business Analysis
 
----
-
-### **How to use it:**
-
-1. **GitHub** → Your repo → `README.md` → `Edit` → Delete everything → Paste this → `Commit changes`
-2. **Check** that `[View Dashboard PDF]` link works after you upload the PDF
-
-**This README now shows:**
-1. **Business impact** in line 1: $8.91M + 82%
-2. **Full tech stack**: Python + SQL + BI — exactly what Superwork hires for
-3. **Code proof**: Actual SQL query + DAX measure visible
-4. **Clean structure**: Any recruiter can skim in 10 seconds
-
-**You’re done. This repo will pass screens.**
-
-**Go commit this README, grab your repo URL, and apply to Superwork.**
-
-Good luck bro — you built a legit analyst portfolio in one night 🚀
