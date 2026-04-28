@@ -27,7 +27,8 @@
       - Programmatically confirmed *82.0% UK revenue concentration*
 Output: 541,909 total cleaned transactions analyzed
 
-Dashboard Development Ecommerce_Sales.pbix
+
+## 1. Dashboard Development Ecommerce_Sales.pbix
 - Custom DAX measure: FORMAT(SUM('cleaned retail'[TotalPrice]), "$#,##0")
 - Interactive date slicer controlling all visuals simultaneously
 - Donut chart showing country-wise revenue breakdown
